@@ -49,7 +49,7 @@ public class GameStats {
     public static int countBigGames(int[] yards, int min) {
         int count = 0;
         for (int i = 0; i < yards.length; i++) {
-            if (yards[i] > min) {
+            if (yards[i] >= min) {
                 count++;
             }
         }
