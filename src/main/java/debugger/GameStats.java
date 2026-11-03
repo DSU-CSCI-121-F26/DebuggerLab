@@ -21,7 +21,7 @@ public class GameStats {
     /** Adds up the yards from every game. */
     public static int totalYards(int[] yards) {
         int total = 0;
-        for (int i = 1; i < yards.length; i++) {
+        for (int i = 0; i < yards.length; i++) {//It doesnt do 12 it skips to 45 fix start at 0
             total = total + yards[i];
         }
         return total;
@@ -30,15 +30,15 @@ public class GameStats {
     /** The average yards per game, with decimals. */
     public static double averageYards(int[] yards) {
         int total = totalYards(yards);
-        double average = total / yards.length;
+        double average = (double)total / yards.length; //the integer division since total starts as an integer we gotta cast it
         return average;
     }
 
     /** The index of the game with the most yards. */
     public static int bestGame(int[] yards) {
         int best = 0;
-        for (int i = 1; i < yards.length; i++) {
-            if (yards[i] > best) {
+        for (int i = 1; i < yards.length; i++) {//start at the first index
+            if (yards[i] > yards[best]) {//best is counting by 1 not the index
                 best = i;
             }
         }
@@ -49,7 +49,7 @@ public class GameStats {
     public static int countBigGames(int[] yards, int min) {
         int count = 0;
         for (int i = 0; i < yards.length; i++) {
-            if (yards[i] > min) {
+            if (yards[i] >= min) {//Add the equals sign cause of atleast
                 count++;
             }
         }
